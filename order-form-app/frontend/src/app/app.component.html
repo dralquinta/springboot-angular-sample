@@ -1,0 +1,13 @@
+<form (ngSubmit)="submitOrder()">
+    <label for="tipoPedido">TIPO PEDIDO:</label>
+    <select id="tipoPedido" [(ngModel)]="orderForm.tipoPedido">
+      <option value="1">Nuevo</option>
+      <option value="2">Retomado</option>
+      <option value="3">Específico</option>
+    </select>
+  
+    <label for="resp">Resp. ?:</label>
+    <input type="checkbox" id="resp" [(ngModel)]="orderForm.resp">
+  
+    <button type="submit">Submit</button>
+  </form>
