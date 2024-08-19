@@ -1,5 +1,5 @@
 {
-    "name": "your-angular-app-name", // Replace with your app's name
+    "name": "springboot-angular-sample", 
     "version": "0.0.1",
     "scripts": {
       "ng": "ng",

@@ -13,8 +13,8 @@
             "builder": "@angular-devkit/build-angular:browser",
             "options": {
               "outputPath": "dist",
-              "index": "src/index.html",
-              "main": "src/main.ts",
+              "index": "order-form-app/frontend/src/app/app.component.html",
+              "main": "order-form-app/frontend/src/app/app.component.ts",
               "polyfills": "src/polyfills.ts",
               "tsConfig": "tsconfig.app.json",
               "aot": true,
@@ -38,6 +38,7 @@
                 "optimization": true,
                 "outputHashing": "all",
                 "sourceMap": false,
+                "extractCss": true,
                 "namedChunks": false,
                 "aot": true,
                 "extractLicenses": true,
