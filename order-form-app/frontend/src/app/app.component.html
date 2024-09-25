@@ -1,15 +1,102 @@
-<link rel="stylesheet" href="style.css">
+<!DOCTYPE html>
+<html>
+<head>
+<title>Order Processing</title>
+<style>
+body { font-family: sans-serif; }
+.container { width: 300px; margin: 20px auto; border: 1px solid #ccc; padding: 15px; }
+label { display: block; margin-bottom: 5px; }
+input, select { width: 100%; padding: 8px; margin-bottom: 10px; box-sizing: border-box; }
+button { background-color: #4CAF50; color: white; padding:    1.  github.com github.com 10px 15px; border: none; cursor: pointer; }
+button:disabled { background-color:    1.  github.com github.com #ccc; cursor: not-allowed; }
+.order-details { margin-top: 20px; border-top: 1px solid #ccc; padding-top: 10px; }
+</style>
+</head>
+<body>
 
-<form (ngSubmit)="submitOrder()">
-    <label for="tipoPedido">TIPO PEDIDO:</label>
-    <select id="tipoPedido" [(ngModel)]="orderForm.tipoPedido">
-      <option value="1">Nuevo</option>
-      <option value="2">Retomado</option>
-      <option value="3">Específico</option>
-    </select>
-  
-    <label for="resp">Resp. ?:</label>
-    <input type="checkbox" id="resp" [(ngModel)]="orderForm.resp">
-  
-    <button type="submit">Submit</button>
-  </form>
+<div class="container">
+  <h2>Tipo Pedido:</h2>
+
+  <label for="orderType">Seleccione:</label>
+  <select id="orderType">
+    <option value="new">Nuevo</option>
+    <option value="resumed">Retomado</option>
+    <option value="specific">Específico</option>
+  </select>
+
+  <div id="orderIdSection" style="display: none;">
+    <label for="orderId">ID Pedido/Etiqueta:</label>
+    <input type="text" id="orderId">
+  </div>
+
+  <div id="orderDetails" class="order-details" style="display: none;">
+    <h3>Detalles del Pedido:</h3>
+    <p>ID Ped: <span id="orderIdDisplay"></span></p>
+    <p>Fecha: <span id="orderDate"></span></p>
+    <p>Cliente: <span id="customerName"></span></p>
+    <p>Tipo: <span id="shippingType"></span></p>
+    <p># SKU: <span id="skuCount"></span></p>
+  </div>
+
+  <div id="itemScanSection" style="display: none;">
+    <label for="itemScan">Escanear Artículo:</label>
+    <input type="text" id="itemScan">
+  </div>
+
+  <button id="finalizeButton" disabled>Finalizar Pedido</button>
+</div>
+
+<script>
+const orderTypeSelect = document.getElementById('orderType');
+const orderIdSection = document.getElementById('orderIdSection');
+const orderDetails = document.getElementById('orderDetails');
+const itemScanSection = document.getElementById('itemScanSection');
+const finalizeButton = document.getElementById('finalizeButton');
+
+orderTypeSelect.addEventListener('change', () => {
+  orderIdSection.style.display = (orderTypeSelect.value !== 'new') ? 'block' : 'none';
+  // Reset other sections if switching to 'new'
+  if (orderTypeSelect.value === 'new') {
+    orderDetails.style.display = 'none';
+    itemScanSection.style.display = 'none';
+    finalizeButton.disabled = true;
+  }
+});
+
+// Placeholder for orderId scan/lookup logic
+document.getElementById('orderId').addEventListener('blur', () => {
+  // Simulate fetching order details (replace with actual logic)
+  const mockOrderDetails = {
+    orderId: '12345',
+    orderDate: '2023-11-20',
+    customerName: 'John Doe',
+    shippingType: 'Standard',
+    skuCount: 5
+  };
+
+  // Populate order details section
+  document.getElementById('orderIdDisplay').textContent = mockOrderDetails.orderId;
+  document.getElementById('orderDate').textContent = mockOrderDetails.orderDate;
+  document.getElementById('customerName').textContent = mockOrderDetails.customerName;
+  document.getElementById('shippingType').textContent = mockOrderDetails.shippingType;
+  document.getElementById('skuCount').textContent = mockOrderDetails.skuCount;
+
+  orderDetails.style.display = 'block';
+  itemScanSection.style.display = 'block';
+});
+
+// Placeholder for item scan and validation logic
+document.getElementById('itemScan').addEventListener('blur', () => {
+  // ... (Implement barcode validation and order update logic here)
+  // Enable finalize button once all items are scanned (replace with actual condition)
+  finalizeButton.disabled = false; 
+});
+
+finalizeButton.addEventListener('click', () => {
+  // ... (Implement finalization logic, e.g., submit data, generate labels)
+  alert('Pedido finalizado!'); // Placeholder confirmation
+});
+</script>
+
+</body>
+</html>

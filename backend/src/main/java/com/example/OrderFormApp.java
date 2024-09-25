@@ -1,14 +1,14 @@
 package com.example;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;    1.  www.stevegood.rocks www.stevegood.rocks
+import org.springframework.boot.autoconfigure.SpringBootApplication;    
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootApplication
-@RestController    1.  juejin.cn juejin.cn
+@RestController    
 public class OrderFormApp {
 
     private List<OrderForm> mockDatabase = new ArrayList<>();
